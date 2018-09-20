@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace csharp_rps
 {
@@ -6,67 +7,92 @@ namespace csharp_rps
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Rock, paper, or scissors?");
-            Random choice = new Random();
 
-            string[] cpuChoice = { "rock", "paper", "scissors" };
+            bool playing = true;
+            Console.Clear();
 
-            int mIndex = choice.Next(cpuChoice.Length);
-
-
-            string myChoice = Console.ReadLine();
-
-            // Console.WriteLine($"Are you sure you want to choose {myChoice}");
-
-            // Console.WriteLine(" I choose: {0}", cpuChoice[mIndex]);
-
-
-
-            if (myChoice != null && myChoice.ToLower() == "rock" && cpuChoice[mIndex] == "paper")
+            while (playing)
             {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]}, I beat you sucka!");
-            };
+                Console.WriteLine("Rock, paper, or scissors?");
+                Random choice = new Random();
 
-            if (myChoice != null && myChoice.ToLower() == "rock" && cpuChoice[mIndex] == "scissors")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]}, Ahh you got me!");
-            };
+                List<string> cpuChoice = new List<string>(new string[] { "rock", "paper", "scissors" });
 
-            if (myChoice != null && myChoice.ToLower() == "rock" && cpuChoice[mIndex] == "rock")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]} too!, We both win!");
-            };
+                int mIndex = choice.Next(cpuChoice.Count);
 
-            if (myChoice != null && myChoice.ToLower() == "scissors" && cpuChoice[mIndex] == "scissors")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]} too!, We both win!");
-            };
 
-            if (myChoice != null && myChoice.ToLower() == "scissors" && cpuChoice[mIndex] == "paper")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]}, Ahh you got me!");
-            };
+                string myChoice = Console.ReadLine();
 
-            if (myChoice != null && myChoice.ToLower() == "scissors" && cpuChoice[mIndex] == "rock")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]}, I beat you sucka!");
-            };
+                // Console.WriteLine($"Are you sure you want to choose {myChoice}");
 
-            if (myChoice != null && myChoice.ToLower() == "paper" && cpuChoice[mIndex] == "scissors")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]}, I beat you sucka!");
-            };
+                // Console.WriteLine(" I choose: {0}", cpuChoice[mIndex]);
 
-            if (myChoice != null && myChoice.ToLower() == "paper" && cpuChoice[mIndex] == "rock")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]}, Ahh you got me!");
-            };
 
-            if (myChoice != null && myChoice.ToLower() == "paper" && cpuChoice[mIndex] == "paper")
-            {
-                Console.WriteLine($"I chose {cpuChoice[mIndex]} too!, We both win!");
-            };
+                if (!cpuChoice.Contains(myChoice))
+                {
+                    Console.WriteLine($"Thaaats not a thing!");
 
+                    continue;
+
+                }
+
+                if (myChoice != null && myChoice.ToLower() == "rock" && cpuChoice[mIndex] == "paper")
+                {
+
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]}, I beat you sucka!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "rock" && cpuChoice[mIndex] == "scissors")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]}, Ahh you got me!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "rock" && cpuChoice[mIndex] == "rock")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]} too!, We both win!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "scissors" && cpuChoice[mIndex] == "scissors")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]} too!, We both win!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "scissors" && cpuChoice[mIndex] == "paper")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]}, Ahh you got me!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "scissors" && cpuChoice[mIndex] == "rock")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]}, I beat you sucka!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "paper" && cpuChoice[mIndex] == "scissors")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]}, I beat you sucka!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "paper" && cpuChoice[mIndex] == "rock")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]}, Ahh you got me!");
+                };
+
+                if (myChoice != null && myChoice.ToLower() == "paper" && cpuChoice[mIndex] == "paper")
+                {
+                    Console.WriteLine($"I chose {cpuChoice[mIndex]} too!, We both win!");
+                };
+
+
+
+                System.Console.WriteLine("Rematch? (Y/N)");
+                string response = Console.ReadLine();
+                if (response.ToUpper() != "Y")
+                {
+                    playing = false;
+
+                }
+
+            };
 
 
 
